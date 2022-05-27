@@ -1,0 +1,66 @@
+{
+  "name": "wanderbud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --mode=development --open --hot",
+    "build": "NODE-ENV=production webpack --mode=production",
+    "server-only": "nodemon ./server/server.js",
+    "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --open --hot\" \"nodemon ./server/server.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wanderbud/wanderbud.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "browserslist": [
+    "defaults",
+    "not ie 11"
+  ],
+  "bugs": {
+    "url": "https://github.com/Wanderbud/wanderbud/issues"
+  },
+  "homepage": "https://github.com/Wanderbud/wanderbud#readme",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.8.1",
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mapbox-gl": "^2.8.2",
+    "mapbox-gl-controls": "^2.3.5",
+    "mongoose": "^6.3.4",
+    "react": "^18.1.0",
+    "react-contenteditable": "^3.3.6",
+    "react-dom": "^18.1.0",
+    "react-map-gl": "^7.0.14",
+    "react-redux": "^8.0.2",
+    "react-scripts": "^5.0.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.0",
+    "@babel/node": "^7.17.10",
+    "@babel/plugin-proposal-class-properties": "^7.17.12",
+    "@babel/plugin-proposal-object-rest-spread": "^7.18.0",
+    "@babel/preset-env": "^7.18.0",
+    "@babel/preset-react": "^7.17.12",
+    "babel-loader": "^8.2.5",
+    "concurrently": "^7.2.1",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "nodemon": "^2.0.16",
+    "rimraf": "^3.0.2",
+    "sass": "^1.52.1",
+    "sass-loader": "^13.0.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
+  }
+}
