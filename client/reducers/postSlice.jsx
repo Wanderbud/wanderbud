@@ -42,7 +42,7 @@ export const postSlice = createSlice({
 })
 
 
-export const { fetchPosts, addPost, joinPost, deletePost } = userSlice.actions
+export const { fetchPosts, joinPost, deletePost } = postSlice.actions
 
 
 //SELECTORS TO INCLUDE

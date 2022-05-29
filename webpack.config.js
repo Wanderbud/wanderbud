@@ -11,7 +11,6 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    // publicPath: '/'
   },
   devtool: 'eval-source-map',
   mode: 'development',
@@ -22,7 +21,6 @@ module.exports = {
     hot: true,
     // fallback to root for other urls
     historyApiFallback: true,
-
     static: {
       // match the output path
       directory: path.resolve(__dirname, 'dist'),
@@ -93,4 +91,4 @@ module.exports = {
     // Enable importing JS / JSX files without specifying their extension
     extensions: ['.js', '.jsx'],
   },
-};
+}

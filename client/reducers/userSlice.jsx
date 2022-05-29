@@ -23,9 +23,10 @@ export const userSlice = createSlice({
 
     //SIGNUP USER REDUCER FUNCTION - 1st thing to be done!
     addUser: (state, action) => {
+      console.log('in addUser reducer', action.payload)
 
       state.users[action.payload.id]= action.payload;
-
+      console.log('in addUser reducer state', state.users[1])
     },
 
     //MODIFY THE USER INFO BASED ON USER KEY AND ADD JOURNEY TO USER, ADD USER TO JOURNEY
