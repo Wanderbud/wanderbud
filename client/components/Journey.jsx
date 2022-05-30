@@ -6,7 +6,10 @@ const Journey = ({journey}) => {
     console.log('in journey component', journey)
     const { origin, destination, date, creator, distance, cost, journey_id} = journey;
     const { firstName } = creator;
-    console.log("HERE IS JOURNEY OBJECT", journey_id);
+
+    console.log('in front end journey', date);
+    console.log('in front end journey22', typeof date);
+    console.log('in front end journey22', date.toString().slice(0, 10));
     const joinObj = {
         userID: creator.user_id,
         journeyID: journey_id
