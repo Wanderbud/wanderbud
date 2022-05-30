@@ -1,12 +1,12 @@
 import React from 'react';
 import SearchTest from '../components/SearchTest';
 
-const Posts = (props) => {
+const Journey = (props) => {
     return (
-        <div>
+        <div className="journey-container">
             <SearchTest />
         </div>
     );
 };
 
-export default Post;
+export default Journey;

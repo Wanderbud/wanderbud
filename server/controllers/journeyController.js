@@ -109,11 +109,22 @@ journeyController.getEntry = (req, res, next) => {
     async function getJourney() {
         try {
             const response = await db.query(`SELECT * FROM "journey" WHERE "origin"='${origin}' AND "destination"='${destination}' AND "date"='${date}' AND "completed"='0'`)
-            foundJourney = await response.rows;
+            const response2 = await db.query(`SELECT * FROM
+            SELECT * FROM (SELECT j.*, uj."userID", u."firstName", u."lastName"
+            FROM "journey" j 
+            FULL JOIN "userJourney" uj
+            ON j."id" = uj."journeyID"
+            FULL JOIN "user" u
+            ON uj."userID" = u."id"
+            WHERE uj."userID" IS NOT NULL) AS A
+            WHERE A."origin"='${origin}' and A."destination"='${destination}' and A.date='${date}'`);
+            foundJourney = await response2.rows;
+            console.log('foundJourney', foundJourney)
             let result = [];
             for (let i = 0; i < foundJourney.length; i++) {
+                let creator = {user_id:foundJourney[i].userID, firstName:foundJourney[i].firstName}
                 let journey = {'journey_id':foundJourney[i].id, 'origin':foundJourney[i].origin, 'destination':foundJourney[i].destination, 
-                'date':foundJourney[i].date, 'distance':foundJourney[i].distance}
+                'date':foundJourney[i].date, 'creator':creator, 'distance':foundJourney[i].distance}
                 result.push(journey)
             }
             res.locals.journey = result;

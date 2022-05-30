@@ -166,6 +166,21 @@ body {
 }
 
 
+//rendered journeys
+.mainFrame {
+    border: 1px solid black;
+}
+
+
+.topPart {
+    display: flex;
+    flex-flow: row;
+}
+
+.bottomPart{
+    display: flex;
+    flex-flow: row;
+}
 //FOOTER
 .footer {
     position: fixed;
