@@ -88,7 +88,7 @@ journeyController.getJourney = (req, res, next) => {
             foundJourney = await response.rows;
             let creator = {user_id:user_id, firstName:res.locals.firstN}
             let journey = {'journey_id':foundJourney[0].id, 'origin':foundJourney[0].origin, 'destination':foundJourney[0].destination, 
-            'date':foundJourney[0].date, 'creator':creator, 'distance':foundJourney[0].distance}
+            'date':foundJourney[0].date.toString().slice(0, 10), 'creator':creator, 'distance':foundJourney[0].distance}
             let result = [journey]
             res.locals.journey = result
             return next();
@@ -105,11 +105,11 @@ journeyController.getJourney = (req, res, next) => {
 // array of objects, each object includes: journeyID, origin, destination, date, distance
 journeyController.getEntry = (req, res, next) => {
     const {origin, destination, date} = req.body;
-
+    console.log('request items', origin)
     async function getJourney() {
         try {
-            const response = await db.query(`SELECT * FROM "journey" WHERE "origin"='${origin}' AND "destination"='${destination}' AND "date"='${date}' AND "completed"='0'`)
-            const response2 = await db.query(`SELECT * FROM
+            // const response = await db.query(`SELECT * FROM "journey" WHERE "origin"='${origin}' AND "destination"='${destination}' AND "date"='${date}' AND "completed"='0'`)
+            const response2 = await db.query(`
             SELECT * FROM (SELECT j.*, uj."userID", u."firstName", u."lastName"
             FROM "journey" j 
             FULL JOIN "userJourney" uj
@@ -117,14 +117,16 @@ journeyController.getEntry = (req, res, next) => {
             FULL JOIN "user" u
             ON uj."userID" = u."id"
             WHERE uj."userID" IS NOT NULL) AS A
-            WHERE A."origin"='${origin}' and A."destination"='${destination}' and A.date='${date}'`);
+            WHERE A."origin"='${origin}' and A."destination"='${destination}' and A."date"='${date}'`);
+            console.log('find query', response2)
             foundJourney = await response2.rows;
             console.log('foundJourney', foundJourney)
+            console.log('data type', foundJourney[0].date)
             let result = [];
             for (let i = 0; i < foundJourney.length; i++) {
                 let creator = {user_id:foundJourney[i].userID, firstName:foundJourney[i].firstName}
                 let journey = {'journey_id':foundJourney[i].id, 'origin':foundJourney[i].origin, 'destination':foundJourney[i].destination, 
-                'date':foundJourney[i].date, 'creator':creator, 'distance':foundJourney[i].distance}
+                'date':foundJourney[i].date.toString().slice(0, 10), 'creator':creator, 'distance':foundJourney[i].distance}
                 result.push(journey)
             }
             res.locals.journey = result;
