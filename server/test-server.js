@@ -33,12 +33,12 @@ if (process.env.NODE_ENV == 'production'){
 });
 }
 
-app.post('/signup', 
+app.post('/signup/users', 
  (req, res) => {
      //grab email and password
-     const { firstName, lastName, age, email, password } = req.body;
-     if (firstName && lastName && age && email && password){
-        return res.status(200).json({ id: 2, firstName, lastName, age, email, password});
+     const { firstName, lastName, age, email } = req.body;
+     if (firstName && lastName && age && email){
+        return res.status(200).json({ id: 2, firstName, lastName, age, email});
      } else {
          return res.status(403).json({ signedUp : false});
      }
@@ -50,7 +50,7 @@ app.post('/login',
      //grab email and password
      const { email, password } = req.body;
      if (email === "asdf" && password === "asdf"){
-        return res.status(200).json({isAuthenticated: true});
+        return res.status(200).json({ id: 2, firstName: 'asdf', lastName: 'asdf', age: '3', email:'bs'});
      } else {
          return res.status(403).json({isAuthenticated: false});
      }

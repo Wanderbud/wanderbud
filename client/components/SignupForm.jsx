@@ -23,8 +23,6 @@ const SignupForm = () => {
 
     //check for errors in signup fields
     const [error, setError] = useState('');
-    const [signedUp, setSignedUp] = useState(false);
-
 
     //onchange handler for signup form
     const onSignup = e => {
@@ -47,17 +45,25 @@ const SignupForm = () => {
             setError(true);
         //if all fields present, send data to server
         } else {
-            
+
                 const signup = async () => {
+                    try {
+                        const sendData = await axios.post('http://localhost:3000/signup/users', values);
+                        console.log(sendData.data);
+                        //dispatch addUser to send the data payload with generated id to redux store
+
+        
+                        /* NEED TO CHANGE !!!!!!!! have backend send status, if user already exists in database, have signup error status be true and do not navigate to posts*/
+                        if (sendData.data) {
+                            dispatch(addUser(sendData.data));
+                            navigate("/posts");
+                        }
+                    } catch (err) {
+                        setError(true);
+                        console.log('error', err);
+                    }
                     //send post request to database to register user
-                    const sendData = await axios.post('http://localhost:3000/signup', values);
-    
-                    //dispatch addUser to send the data payload with generated id to redux store
-                    dispatch(addUser(sendData.data));
-    
-                    /* NEED TO CHANGE !!!!!!!! have backend send status, if user already exists in database, have signup error status be true and do not navigate to posts*/
-                    if (sendData.data) setSignedUp(true);
-                    if (sendData.data) navigate("/posts");
+                    
                 }
     
                 signup();
@@ -77,7 +83,6 @@ const SignupForm = () => {
     
         
     }
-
 
     return (
 

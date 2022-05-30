@@ -25,7 +25,7 @@ module.exports = {
       // match the output path
       directory: path.resolve(__dirname, 'dist'),
       // // match the output 'publicPath'
-      // publicPath: '/dist',
+      publicPath: '/dist',
     },
 
     headers: { 

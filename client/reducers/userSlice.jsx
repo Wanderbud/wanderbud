@@ -5,8 +5,12 @@ export const userSlice = createSlice({
   name: 'user',
   //define initial state
   initialState: {
-    users: {} //should be array or object?
-
+    users: {}, //should be array or object?
+    id: null,
+    age:'',
+    email:'',
+    firstName: '',
+    lastName: ''
     //{id1 : {user info}, id2: {user info}}
   },
   
@@ -22,11 +26,15 @@ export const userSlice = createSlice({
     // },
 
     //SIGNUP USER REDUCER FUNCTION - 1st thing to be done!
-    addUser: (state, action) => {
-      console.log('in addUser reducer', action.payload)
 
-      state.users[action.payload.id]= action.payload;
-      console.log('in addUser reducer state', state.users[1])
+    addUser: (state, action) => {
+      const { age, email, id, firstName, lastName} = action.payload;
+      state.age = age;
+      state.email = email;
+      state.id = id;
+      state.firstName = firstName;
+      state.lastName = lastName;
+      console.log('in addUser reducer state', state.firstName)
     },
 
     //MODIFY THE USER INFO BASED ON USER KEY AND ADD JOURNEY TO USER, ADD USER TO JOURNEY
@@ -55,5 +63,10 @@ export const { addUser, joinUser, deleteUser } = userSlice.actions
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state) => state.counter.value)`
 export const selectUsers = (state) => state.users.users
+export const selectFirstname = (state) => state.users.firstName
+export const selectLoggedInUser = (state) => {
+  const { id, age, email,firstName, lastName} = state.users;
+  return { id, age, email,firstName, lastName}
+}
 
 export default userSlice.reducer

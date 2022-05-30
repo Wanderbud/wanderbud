@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { addUser } from '../reducers/userSlice';
 import axios from 'axios';
 
 
@@ -51,11 +52,11 @@ const loginForm = () => {
 
                     /* NEED TO CHANGE !!!!!!!! have backend send status, if user already exists in database, have signup error status be true and do not navigate to posts*/
                     console.log('login response', sendData.data)
-                    //should dispatch userData back
-                    //having errors here, cannot change setAuthStatus
-                    setAuthStatus(sendData.data.isAuthenticated);
-                    console.log('authStatus', authStatus)
-                    if(sendData.data.isAuthenticated) navigate("/posts"); 
+
+                    if(sendData.data.id) {
+                        dispatch(addUser(sendData.data))
+                        navigate("/posts"); 
+                    }
 
                 } catch (err) {
                     setError(true);
