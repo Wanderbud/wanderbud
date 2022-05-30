@@ -10,7 +10,7 @@ router.post('/signup/users',
     });
 
 // Log in a user (then authenticate: stretch feature) 
-router.get('/login', 
+router.post('/login', 
     userController.loginUser, 
     (req, res) => {
         res.status(200).json(res.locals.userData);
