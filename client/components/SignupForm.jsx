@@ -56,7 +56,7 @@ const SignupForm = () => {
                         /* NEED TO CHANGE !!!!!!!! have backend send status, if user already exists in database, have signup error status be true and do not navigate to posts*/
                         if (sendData.data) {
                             dispatch(addUser(sendData.data));
-                            navigate("/posts");
+                            navigate("/journey");
                         }
                     } catch (err) {
                         setError(true);
@@ -77,11 +77,7 @@ const SignupForm = () => {
                     password:'' 
                  })
             }
-
-            //if signedUp successfully, 
-            // if (signedUp) navigate("posts");
-    
-        
+       
     }
 
     return (
@@ -155,9 +151,12 @@ const SignupForm = () => {
                         onChange={onSignup}
                     />
                 </div>
-                <button className="form-input-btn" type="submit">Sign up</button>
+                <div className="form-input-btn">
+                    <button className="signup-form-btn" type="submit">Sign up</button>
+                    
+                </div>
                 {/* If field is missing, then display error message */}
-                {error && <p> Please input required fields </p>}
+                {error && <p style={{color:"#FF3D2E"}}> Please input required fields </p>}
             </form>
     
         </div>

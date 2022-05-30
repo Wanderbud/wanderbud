@@ -1,13 +1,11 @@
-import React, { useState, useCallback } from 'react';
-import { useNavigate } from "react-router-dom";
+import React from 'react';
 import LoginDisplay from '../components/LoginDisplay';
-import PostDisplay from '../components/PostDisplay';
+
 
 const Login = () => {
 
     return (
-        <div className="form-signup">
-            
+        <div className="login-container">
             <LoginDisplay />
         </div>
     )

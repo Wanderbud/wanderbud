@@ -8,7 +8,7 @@ import Landing from "./containers/Landing";
 import Wanderbud from "./media/wanderbud-logo.png"
 //TEST IMPORTS
 import Login from './containers/Login';
-import PostDisplay from "./components/PostDisplay"
+import JourneyDisplay from "./components/JourneyDisplay"
 import { selectFirstname } from './reducers/userSlice';
 
 // import ErrorPage from './containers/ErrorPage';
@@ -21,20 +21,20 @@ const App = () => {
     <Router>
         <nav className="navbar">
             <img className="navbar-logo" src={Wanderbud} alt="Wanderbud" />
-            <h1>Wanderbud</h1>
+            <h1>wanderBud</h1>
             <div className="navbar-links">
               <Link className="navbar-link" to="/"> Home </Link>
               { !firstName && <Link className="navbar-link" to="/login">Login </Link>}
-              { firstName && <Link className="navbar-link" to="/posts"> Posts </Link>}
+              { firstName && <Link className="navbar-link" to="/journey"> Journeys </Link>}
             </div>
         </nav>
         {firstName && <p>Welcome {firstName}</p>}
         <Routes>
             <Route path="/login" element={ <Login /> }/> 
-            <Route path="/posts" element={ <PostDisplay /> }/> 
+            <Route path="/journey" element={ <JourneyDisplay /> }/> 
             <Route path="/*" element={<Landing />}/> 
             {/* <Route path="/login" element={<Login />}/>  */}
-            {/* <Route path="/posts" element={<Posts />}/>  */}
+            {/* <Route path="/journey" element={<Journeys />}/>  */}
             {/* error page */}
             {/* <Route path="*" element={<ErrorPage />}/>  */}
         </Routes>

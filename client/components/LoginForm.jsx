@@ -20,7 +20,6 @@ const loginForm = () => {
 
     //check for errors
     const [error, setError] = useState(false);
-    const [authStatus, setAuthStatus] = useState(false);
 
     //onchange handler for login form
     const onLogin = e => {
@@ -31,6 +30,7 @@ const loginForm = () => {
             ...values,
             [ name ]: value
         })
+        console.log(values)
     }
 
     //onsubmit handler for login form
@@ -55,7 +55,7 @@ const loginForm = () => {
 
                     if(sendData.data.id) {
                         dispatch(addUser(sendData.data))
-                        navigate("/posts"); 
+                        navigate("/journey"); 
                     }
 
                 } catch (err) {
@@ -108,43 +108,16 @@ const loginForm = () => {
                         onChange={onLogin}
                     />
                 </div>
-                <button className="form-input-btn" type="submit">Login</button>
+                <div className="form-input-btn">
+                    <button className="login-form-btn" type="submit">Login</button>
+                </div>
                 {/* If field is missing, then display error message */}
-                {error && <p>Invalid email or password. Try Again</p>}
+                {error && <p style={{color:"#FF3D2E"}}>Invalid email or password. Try Again</p>}
             </form>
     
         </div>
     );
 
 };
-
-
-
-
-
-    
-
-
-
-    //login Button handler - Post request with login details
-    // const handleLogin = e => {
-    //     //CREATE LOGIN REQUEST TO BACKEND WITH THE EMAIL AND PASSWORD DATA
-    //     const sendlogin = async () => {
-    //         try{
-    //             const loginData = await axios.post('http://localhost:3000/login', { firstName, lastName, age, newEmail, newPassword })
-    //             // const loginData = await axios.post('http://localhost:3000/login', { firstName, lastName, age, newEmail, newPassword })
-    //             //dispatch addUser info into store
-    //             dispatch(addUser(loginData.data));
-    //         } catch (err) {
-    //             //have component render Unable to login instead?
-    //             console.log(err);
-    //         }
-    //     }
-    //     sendLogin();
-    //     navigate("/posts");
-    // }
-
-
-    // LOGIN Button handler - Post request with login details
 
 export default loginForm;

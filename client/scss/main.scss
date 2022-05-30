@@ -14,12 +14,15 @@ html {
 
 body {
     margin: 0px;
+    font-family: "Montserrat", sans-serif;
 }
 
+
+//NAVIGATION BAR STYLING
 .navbar {
     display: flex;
     flex-flow: row;
-    font-family: "Montserrat", sans-serif;
+
     color: $lightBlue;
     align-items: center;
     justify-content: space-between;
@@ -27,13 +30,15 @@ body {
 
 
     .navbar-logo {
+        margin-left: 40px;
+        margin-right:20px;
         image-rendering: crisp-edges;
         
     }
 
     .navbar-links {
         margin: 0.5rem;
-        justify-content: space-around;
+        margin-right: 20px;
     }
     
     .navbar-link {
@@ -50,9 +55,122 @@ body {
     }
 }
 
+.navbar > h1 {
+    font-size: 2rem;
+    align-self: center;
+}
+
+
+
+
+// LOGIN AND SIGNUP FORM STYLING
+
+// LOGIN
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding-top: 5rem;
+}
+
+
+.login-display {
+    border-radius: 2rem;
+    height: 500px;
+    width: 20rem;
+}
+
+.login-form {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid rgb(200, 199, 199);
+    height: 400px;
+    padding-top: 15px;
+
+}
+
+.login-form > h1 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.login-inputs {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+//SIGNUP FORM
+.signup-form {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid rgb(200, 199, 199);
+    height: 400px;
+    padding-top: 15px;
+
+}
+
+.signup-form > h1 {
+    padding-bottom: 20px;
+}
+
+.signup-inputs {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.form-input-btn {
+    // display: flex;
+    // justify-content: center;
+    align-self: center;
+    margin-top: 40px;
+
+}
+
+
+.login-form-btn{
+    width: 70px;
+    height: 25px;
+    border: 0.1rem solid $red;
+    border-radius: 0.3rem;
+    background-color: white;
+    color: $red;
+
+    &:hover{
+        background-color: $red;
+        color: white;
+    }
+}
+
+.signup-form-btn{
+    width: 70px;
+    height: 25px;
+    border: 0.1rem solid $red;
+    border-radius: 0.3rem;
+    background-color: white;
+    color: $red;
+
+    &:hover{
+        background-color: $red;
+        color: white;
+    }
+}
+
+
+.form-input-btn p{
+    color: $red;
+}
+
+
+//FOOTER
 .footer {
     position: fixed;
     left: 0;
     bottom: 0;
     right: 0;
+    align-self: center;
 }

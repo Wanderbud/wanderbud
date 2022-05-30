@@ -45,6 +45,8 @@ app.post('/signup/users',
  }
 )
 
+
+
 app.post('/login', 
  (req, res) => {
      //grab email and password
@@ -57,7 +59,34 @@ app.post('/login',
  }
 )
 
+app.post('/journey/find', 
+ (req, res) => {
+     //grab email and password
+     const { origin, destination, date } = req.body;
+     posts = [{journeyid: 123123, origin:'ny', destination:'bali', date:'2022-05-17', creator: {id: 1, firstName: 'A'}, distance:'2000km', cost:'$5000'}]
+     if (origin && destination && date){
+        return res.status(200).json(posts);
+     } else {
+         return res.status(403).json({err: 'Could not find'});
+     }
+ }
+)
 
+
+app.post('/journey/create', 
+ (req, res) => {
+     //grab email and password
+     const { origin, destination, date, driver, user_id } = req.body;
+     //array to find all entries with the same origin, desitination and date
+     posts = [{journey_id: 123123, origin:'ny', destination:'bali', date:'2022-05-17', creator: {user_id: 1, firstName: 'A'}, distance:'2000km', cost:'$5000'}]
+     posts.push({id: 2, origin, destination, date, driver})
+     if (origin && destination && date){
+        return res.status(200).json(posts);
+     } else {
+         return res.status(403).json({err: 'Could not find'});
+     }
+ }
+)
 
 
 

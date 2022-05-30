@@ -2,19 +2,20 @@
 // https://blog.logrocket.com/how-to-make-http-requests-like-a-pro-with-axios/
 
 import React from 'react';
+import SearchTest from './SearchTest';
 
 
-const PostDisplay = () => {
+const JourneyDisplay = () => {
 
     // const posts = useSelector(selectPosts);
     return (
         <div>
-            <h1>Post</h1>
+            <SearchTest />
         </div>
     );
 };
 
-export default PostDisplay;
+export default JourneyDisplay;
 
 
 
