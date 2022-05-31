@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const dotenv = require('dotenv').config(); //import .env variables
+const cookieParser = require('cookie-parser');
 
 const PORT = 3000;
 const app = express();
@@ -14,10 +15,18 @@ const journeyRouter = require('./routes/journeyRouter');
  app.use(express.urlencoded({ extended: true }));
  app.use(cors());
 
+ // Cookie Parser
+//  app.use(cookieParser());
+
 //server logic
 // Home Directory - Landing Page
 app.use('/', userRouter);
 app.use('/journey', journeyRouter);
+
+// Lost Session - replace file 
+// app.get('/nosession', (req, res) => {
+//   return res.status(401).sendFile(path.join(__dirname, '../index.html'));
+// });
 
 
 //if in production mode, statically serve everything in the build folder on the route '/dist'
