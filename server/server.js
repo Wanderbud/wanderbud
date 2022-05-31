@@ -20,8 +20,9 @@ const journeyRouter = require('./routes/journeyRouter');
 
 //server logic
 // Home Directory - Landing Page
-app.use('/', userRouter);
 app.use('/journey', journeyRouter);
+app.use('/', userRouter);
+
 
 // Lost Session - replace file 
 // app.get('/nosession', (req, res) => {
