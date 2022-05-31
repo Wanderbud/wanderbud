@@ -103,7 +103,7 @@ const SearchTest = () => {
   return (
     <div className="searchTest">
         <form className="search-posts" onSubmit={handleSubmit}>
-        <div className="search-inputs">
+            <div className="search-inputs">
                 <label htmlFor="origin" className="search-label">Origin</label>
                 <input
                   id="origin"
@@ -149,7 +149,7 @@ const SearchTest = () => {
                   onChange={onSearch}
                 />
             </div>
-            <div className="search-inputs">
+            <div className="search-select">
                 <select 
                     className="select"
                     value={values.select} 
