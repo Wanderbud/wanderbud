@@ -24,22 +24,9 @@ const JourneyDisplay = () => {
             </div>
         )
     });
-    // useEffect(() => {
-    //     const newJourneys = renderJourneys.map((journey) => {
-    //         return (
-    //             <div className="journey-posts">
-    //                 <Journey 
-    //                     journey={journey}
-    //                 />
-    //             </div>
-    //         )
-    //     })
-    
-    //     setRenderJourneys(newJourneys)
-    //   },[journeys])
 
     return (
-        <div>
+        <div className="journey-display">
             <SearchTest />
             {renderJourneys}
         </div>

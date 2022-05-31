@@ -30,7 +30,7 @@ const loginForm = () => {
             ...values,
             [ name ]: value
         })
-        console.log(values)
+        setError(false);
     }
 
     //onsubmit handler for login form
@@ -100,7 +100,7 @@ const loginForm = () => {
                     <label htmlFor="password" className="login-label">Password </label>
                     <input 
                         id="password"
-                        type="text" 
+                        type="password" 
                         name="password" 
                         className="login-input" 
                         placeholder="Choose a password"

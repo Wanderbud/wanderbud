@@ -7,8 +7,8 @@ export const journeySlice = createSlice({
   initialState: {
     count: 0,
     journeys: [],
-    upcomingJourneys: {},
-    completedJourneys: {}
+    upcomingJourneys: [],
+    completedJourneys: []
   },
   
   //reducer functions
@@ -28,12 +28,12 @@ export const journeySlice = createSlice({
     // JOIN POST WILL BE A STRETCH FEATURE
     joinJourney: (state, action) => {
         // state.posts[action.payload.id].buds.push(action.payload.user)
+        state.upcomingJourneys.push(action.payload);
     },
 
     deleteJourney: (state, action) => {
-      const newStateJourneys = state.journeys(el => el.id === action.payload.id)
-      state.journeys = newStateJourneys
-
+      const newStateJourneys = state.upcomingJourneys.filter(el => el.id === action.payload)
+      state.upcomingJourneys = newStateJourneys;
     }
 
   },
@@ -49,5 +49,6 @@ export const { fetchJourney, joinJourney, deleteJourney } = journeySlice.actions
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state) => state.counter.value)`
 export const selectJourney = (state) => state.journeys.journeys
+export const selectUpcomingJourneys = (state) => state.journeys.upcomingJourneys
 
 export default journeySlice.reducer
