@@ -23,13 +23,6 @@ router.delete('/join', journeyController.unjoin, (req, res) => {
     res.status(200);
 }); 
 
-// Gets all of user journeys for their profile
-// Send back an array of journey objects. Each object has origin, destination and date
-// Add a completed button on front end portion on journeys here
-router.get('/profile', journeyController.userJourneys, (req, res) => {
-    res.status(200).json(res.locals.allJourneys);
-});
-
 /* // Update after a journey is completed
 router.patch('/', journeyController.updateEntry, journeyController.getUpdatedJourneyID, 
 journeyController.totalPeople, journeyController.updateUserJourney, (req, res) => {

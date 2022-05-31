@@ -20,11 +20,10 @@ export const journeySlice = createSlice({
       console.log('in dispatcher', state.journeys[0]);
     },
 
-    // addPost: (state, action) => {
-    //   //most recent post 
-    //   state.posts[action.payload.id] = action.payload.post
+    userJourney: (state, action) => {
+      state.upcomingJourneys = [...action.payload];
+    },
 
-    // },
     // JOIN POST WILL BE A STRETCH FEATURE
     joinJourney: (state, action) => {
         // state.posts[action.payload.id].buds.push(action.payload.user)
@@ -49,7 +48,7 @@ export const journeySlice = createSlice({
 })
 
 
-export const { fetchJourney, joinJourney, unjoinJourney, deleteJourneyDispatch } = journeySlice.actions
+export const { fetchJourney, userJourney, joinJourney, unjoinJourney, deleteJourneyDispatch } = journeySlice.actions
 
 
 //SELECTORS TO INCLUDE

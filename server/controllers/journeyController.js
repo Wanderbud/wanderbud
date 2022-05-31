@@ -204,27 +204,6 @@ journeyController.deleteEntry = (req, res, next) => {
     }) 
 }
 
-// gets all of user's journeys
-journeyController.userJourneys = (req, res, next) => {
-    const {userID} = req.body;
-    console.log("User ID: ",userID)
-
-    async function userJourneys() {
-        try {
-                const response = await db.query(`SELECT j."origin", j."destination", j."date" FROM "userJourney" uj
-                LEFT JOIN "journey" j ON j."id"="journeyID"
-                WHERE uj."userID"=${userID}`);
-                const journeys = await response.rows;
-                res.locals.allJourneys = journeys
-                return next();
-            }
-            catch(err) {
-                console.log("Error fetching journeys...");
-            }
-        }
-        userJourneys();
-}
-
 /* // Update after a journey is completed
 // NEED TO calculate distance, calculate totalCost after completing a journey
 journeyController.updateEntry = (req, res, next) => {

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addUser } from '../reducers/userSlice';
+import { userJourney } from '../reducers/journeySlice';
 import axios from 'axios';
 
 
@@ -53,8 +54,11 @@ const loginForm = () => {
                     /* NEED TO CHANGE !!!!!!!! have backend send status, if user already exists in database, have signup error status be true and do not navigate to posts*/
                     console.log('login response', sendData.data)
 
-                    if(sendData.data.id) {
-                        dispatch(addUser(sendData.data))
+                    if(sendData.data) {
+                        dispatch(addUser(sendData.data.userData));
+                        const { journeyData } = sendData.data;
+                        journeyData.map((obj) => obj.date = obj.date.toString().slice(0,10))
+                        dispatch(userJourney(journeyData));
                         navigate("/journey"); 
                     }
 
