@@ -50,9 +50,6 @@ sessionController.startSession = (req, res, next) => {
                 'message': {err: 'sessionController.startSession: ERROR: check server logs for details'}
               });
         })
-
-  console.log('SSID Cookie: ', req.cookies);
-  return next();
 };
 
 module.exports = sessionController;

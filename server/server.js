@@ -16,7 +16,7 @@ const journeyRouter = require('./routes/journeyRouter');
  app.use(cors());
 
  // Cookie Parser
-//  app.use(cookieParser());
+ app.use(cookieParser());
 
 //server logic
 // Home Directory - Landing Page
