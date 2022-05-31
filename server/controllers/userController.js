@@ -81,26 +81,26 @@ userController.loginUser = (req, res, next) => {
         })
 }
 
-// gets all of user's journeys
-// userController.userJourneys = (req, res, next) => {
-//     const {userID} = req.body;
-//     console.log("User ID: ",userID)
+//gets all of user's journeys
+userController.userJourneys = (req, res, next) => {
+    const userID = res.locals.userData.id;
+    console.log("User ID: ",userID)
 
-//     async function userJourneys() {
-//         try {
-//                 const response = await db.query(`SELECT j."origin", j."destination", j."date" FROM "userJourney" uj
-//                 LEFT JOIN "journey" j ON j."id"="journeyID"
-//                 WHERE uj."userID"=${userID}`);
-//                 const journeys = await response.rows;
-//                 res.locals.allJourneys = journeys
-//                 return next();
-//             }
-//             catch(err) {
-//                 console.log("Error fetching journeys...");
-//             }
-//         }
-//         userJourneys();
-// }
+    async function userJourneys() {
+        try {
+                const response = await db.query(`SELECT j."id", j."origin", j."destination", j."date" FROM "userJourney" uj
+                LEFT JOIN "journey" j ON j."id"="journeyID"
+                WHERE uj."userID"=${userID}`);
+                const journeys = await response.rows;
+                res.locals.allJourneys = journeys
+                return next();
+            }
+            catch(err) {
+                console.log("Error fetching journeys...");
+            }
+        }
+        userJourneys();
+}
 
 module.exports = userController;
 

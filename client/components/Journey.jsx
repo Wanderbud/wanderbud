@@ -136,7 +136,7 @@ const Journey = ({journey, index}) => {
                         <p className="journey-trait" >{firstName}</p>
                     </div>
 
-                    <div className="journey-label">
+                    {/* <div className="journey-label">
                         <p className="journey-trait-label" >Distance:</p>
                         <p className="journey-trait" >{distance}</p>
                     </div>
@@ -144,7 +144,7 @@ const Journey = ({journey, index}) => {
                     <div className="journey-label">
                         <p className="journey-trait-label" >Cost:</p>
                         <p className="journey-trait" >{cost}</p>  
-                    </div>              
+                    </div>               */}
                 </div>
                 {error && <p>Operation unsuccessful</p>}
             </div>

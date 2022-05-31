@@ -50,7 +50,7 @@ const Profile = () => {
 
         <div className="profile">
             <div className="profile-header">
-                {firstName && <h1>Welcome {firstName}</h1>}
+                {firstName && <h1>Welcome <i>{firstName}</i></h1>}
             </div>
             <div className="list-journeys">
                 <div className="list-h2">
