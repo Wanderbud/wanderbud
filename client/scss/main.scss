@@ -195,12 +195,31 @@ body {
 
 
 .journey-container {
-    margin-top: 80px;
+    margin-top: 40px;
     margin-left: 50px;
     margin-right: 50px;
+    margin-bottom: 80px;
+
+}
+
+.journey-display {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.journey-png {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 //SEARCH DISPLAY
+.searchTest {
+    // position: relative;
+    // top: -70;
+    background-color: white;
+    // width: 500px;
+}
 .search-posts{
     display: flex;
     justify-content: center;
@@ -215,6 +234,7 @@ body {
     margin-left: 20px;
     margin-right: 20px;
 }
+
 
 
 .search-inputs > input {
@@ -300,6 +320,20 @@ select {
 .join-btn {
     margin-left: 10px;
     margin-right: 10px;
+}
+
+.deleteButton {
+    width: 70px;
+    height: 25px;
+    border: 0.1rem solid $red;
+    border-radius: 0.3rem;
+    background-color: white;
+    color: $red;
+
+    &:hover{
+        background-color: $red;
+        color: white;
+    }
 }
 
 .joinButton {
