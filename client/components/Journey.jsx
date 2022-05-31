@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { joinJourney, deleteJourney } from "../reducers/journeySlice"
+import { joinJourney, unjoinJourney, deleteJourneyDispatch } from "../reducers/journeySlice"
 import { selectUserId } from "../reducers/userSlice";
 import wanderbud from '../media/wanderbud-logo.png';
 
 // const Journey = ({origin, destination, date, journey_id})=>{
-const Journey = ({journey}) => {
+const Journey = ({journey, index}) => {
     const [ toggle, setToggle ] = useState(true);
     const [ error, setError ] = useState(false);
     const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const Journey = ({journey}) => {
 
     const { origin, destination, date, creator, distance, cost, journey_id} = journey;
     const { firstName } = creator;
-
+    
 
     const joinObj = {
         userID: user_id,
@@ -22,6 +22,25 @@ const Journey = ({journey}) => {
     }
 
     console.log('joinObj', joinObj);
+
+
+    const handleDelete = (e) => {
+        e.preventDefault()
+        const deleteJourney = async() => { 
+            try {
+                const deleteData = await axios.delete('http://localhost:3000/journey', {data:{joinObj}});
+                console.log('delete response', deleteData)
+            }
+            catch (err) {
+                setError(true);
+            }
+        }
+        deleteJourney();
+        console.log("hello")
+        dispatch(deleteJourneyDispatch(index));
+    }
+
+
     const handleClick = e => {
         setToggle(!toggle);
         console.log(toggle);
@@ -59,12 +78,12 @@ const Journey = ({journey}) => {
         } else if (toggle === false) {
             const unjoin = async () => {
                 try {
-                    const unjoinData = await axios.delete('http://localhost:3000/journey/join', joinObj);
+                    const unjoinData = await axios.delete('http://localhost:3000/journey/join', {data:{joinObj}});
                     console.log('unjoinData', unjoinData.data);
                     //dispatch addUser to send the data payload with generated id to redux store
 
     
-                    dispatch(deleteJourney(journeyID));
+                    dispatch(unjoinJourney(journeyID));
                     // if (unjoinData.data) {
                     //     dispatch(deleteUser(unjoinData.data));
                     console.log('Unjoin Successful')
@@ -105,7 +124,7 @@ const Journey = ({journey}) => {
                         <p className="journey-trait" >{date}</p>
                     </div>
                     <div className="join-btn">
-                        <button className="joinButton" onClick={handleClick}>{toggle? "Join" : "Unjoin"}</button>
+                        {creator.user_id === user_id? <button className="deleteButton" onClick={handleDelete}>X</button>: <button className="joinButton" onClick={handleClick}>{toggle? "Join" : "Unjoin"}</button>}
                     </div>
                 
 
@@ -127,6 +146,7 @@ const Journey = ({journey}) => {
                         <p className="journey-trait" >{cost}</p>  
                     </div>              
                 </div>
+                {error && <p>Operation unsuccessful</p>}
             </div>
         </div>
         

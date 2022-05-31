@@ -31,9 +31,17 @@ export const journeySlice = createSlice({
         state.upcomingJourneys.push(action.payload);
     },
 
-    deleteJourney: (state, action) => {
-      const newStateJourneys = state.upcomingJourneys.filter(el => el.id === action.payload)
-      state.upcomingJourneys = newStateJourneys;
+    unjoinJourney: (state, action) => {
+      // state.posts[action.payload.id].buds.push(action.payload.user)
+      const newUpcomingJourneys = state.upcomingJourneys.filter(el => el.journey_id === action.payload)
+      state.upcomingJourneys = newUpcomingJourneys;
+      console.log('Unjoin a journey')
+    },
+
+    deleteJourneyDispatch: (state, action) => {
+      const deleteJourneys = state.journeys.filter((el, i) => i != action.payload)
+      state.journeys = deleteJourneys;
+      console.log('Delete a journey', state.journeys[0])
     }
 
   },
@@ -41,7 +49,7 @@ export const journeySlice = createSlice({
 })
 
 
-export const { fetchJourney, joinJourney, deleteJourney } = journeySlice.actions
+export const { fetchJourney, joinJourney, unjoinJourney, deleteJourneyDispatch } = journeySlice.actions
 
 
 //SELECTORS TO INCLUDE

@@ -10,7 +10,7 @@ const Profile = () => {
     const journeys = useSelector(selectJourney);
     const upcomingJourneys = useSelector(selectUpcomingJourneys);
 
-    const allJourneys = [...journeys, ...upcomingJourneys];
+    const allJourneys = [...upcomingJourneys];
 
     console.log('allJourneys', allJourneys);
 
@@ -54,7 +54,7 @@ const Profile = () => {
             </div>
             <div className="list-journeys">
                 <div className="list-h2">
-                    <h2>Your upcoming journeys</h2>
+                    <h2>Your journeys</h2>
                 </div>
                 {userJourneys}
             </div>
